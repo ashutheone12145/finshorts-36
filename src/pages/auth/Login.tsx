@@ -34,18 +34,24 @@ const Login = () => {
       const user = users.find((u: any) => u.email === data.email && u.password === data.password);
       
       if (user) {
-        // Store logged in user info
-        localStorage.setItem('currentUser', JSON.stringify({
+        // Store logged in user info with more details
+        const userSession = {
           email: user.email,
-          loginTime: new Date().toISOString()
-        }));
+          loginTime: new Date().toISOString(),
+          isAuthenticated: true
+        };
+        
+        localStorage.setItem('currentUser', JSON.stringify(userSession));
         
         toast({
           title: "Login successful!",
           description: "Welcome back!",
         });
         
-        navigate("/");
+        // Add a small delay to ensure the toast is visible
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
       } else {
         throw new Error("Invalid email or password");
       }
@@ -59,7 +65,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container max-w-md mx-auto p-4 h-screen flex items-center justify-center">
+    <div className="container max-w-md mx-auto p-4 flex items-center justify-center">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Welcome back</CardTitle>
