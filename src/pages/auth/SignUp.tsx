@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const signUpSchema = z.object({
@@ -19,6 +20,8 @@ const signUpSchema = z.object({
 type SignUpForm = z.infer<typeof signUpSchema>;
 
 const SignUp = () => {
+  const { toast } = useToast();
+  const navigate = useNavigate();
   const form = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -28,9 +31,30 @@ const SignUp = () => {
     },
   });
 
-  const onSubmit = (data: SignUpForm) => {
-    console.log("Form submitted:", data);
-    // TODO: Implement signup logic
+  const onSubmit = async (data: SignUpForm) => {
+    try {
+      // Here you would typically make an API call to your backend
+      // For now, we'll simulate a successful signup
+      console.log("Form submitted:", data);
+      
+      // Show success message
+      toast({
+        title: "Account created successfully!",
+        description: "You can now sign in with your credentials.",
+        variant: "default",
+      });
+
+      // Redirect to login page after successful signup
+      setTimeout(() => {
+        navigate("/auth/login");
+      }, 2000);
+    } catch (error) {
+      toast({
+        title: "Error creating account",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -84,7 +108,9 @@ const SignUp = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">Sign Up</Button>
+              <Button type="submit" className="w-full">
+                Sign Up
+              </Button>
             </form>
           </Form>
         </CardContent>
