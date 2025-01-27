@@ -25,7 +25,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate("/auth/signup")}
-                  className="bg-white text-primary hover:bg-gray-100"
+                  className="bg-white text-primary hover:bg-gray-100 transition-colors duration-200"
                 >
                   Get Started Free
                 </Button>
@@ -33,7 +33,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/features")}
-                  className="text-white border-white hover:bg-white/10"
+                  className="text-white border-white hover:bg-white/20 transition-colors duration-200"
                 >
                   Learn More
                 </Button>
@@ -52,7 +52,7 @@ const Index = () => {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-white rounded-lg shadow-md card-hover"
+                  className="p-6 bg-white rounded-lg shadow-md transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
                 >
                   <div className="text-accent mb-4 text-2xl">
                     {feature.icon}
@@ -77,7 +77,7 @@ const Index = () => {
             <Button
               size="lg"
               onClick={() => navigate("/auth/signup")}
-              className="bg-accent text-white hover:bg-accent/90"
+              className="bg-accent text-white hover:bg-accent/90 transition-colors duration-200"
             >
               Start Free Trial
             </Button>

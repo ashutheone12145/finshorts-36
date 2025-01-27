@@ -34,36 +34,36 @@ const SignUp = () => {
 
   const onSubmit = async (data: SignUpForm) => {
     try {
-      // Log the signup attempt
-      console.log("Form submitted:", data);
+      // Get existing users or initialize empty array
+      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
       
-      // Store user credentials in localStorage (this is just for demo purposes)
-      // In a real app, you would make an API call to your backend
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      const userExists = users.some((user: any) => user.email === data.email);
-      
-      if (userExists) {
-        throw new Error("User already exists");
+      // Check if user already exists
+      if (existingUsers.some((user: any) => user.email === data.email)) {
+        throw new Error("An account with this email already exists");
       }
-      
-      users.push({
+
+      // Add new user
+      const newUser = {
         email: data.email,
-        password: data.password
-      });
+        password: data.password,
+        createdAt: new Date().toISOString()
+      };
+
+      existingUsers.push(newUser);
       
-      localStorage.setItem('users', JSON.stringify(users));
+      // Save updated users array
+      localStorage.setItem('users', JSON.stringify(existingUsers));
       
       // Show success message
       toast({
         title: "Account created successfully!",
         description: "You can now sign in with your credentials.",
-        variant: "default",
       });
 
-      // Redirect to login page after successful signup
+      // Navigate to login page
       setTimeout(() => {
         navigate("/auth/login");
-      }, 2000);
+      }, 1500);
     } catch (error: any) {
       toast({
         title: "Error creating account",

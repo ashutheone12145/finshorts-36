@@ -29,32 +29,30 @@ const Login = () => {
 
   const onSubmit = async (data: LoginForm) => {
     try {
-      // Log the login attempt
-      console.log("Login attempt:", data);
-      
       // Get users from localStorage
       const users = JSON.parse(localStorage.getItem('users') || '[]');
       const user = users.find((u: any) => u.email === data.email && u.password === data.password);
       
       if (user) {
-        // Store logged in user info (in a real app, you'd store a token)
-        localStorage.setItem('currentUser', JSON.stringify({ email: user.email }));
+        // Store logged in user info
+        localStorage.setItem('currentUser', JSON.stringify({
+          email: user.email,
+          loginTime: new Date().toISOString()
+        }));
         
         toast({
           title: "Login successful!",
           description: "Welcome back!",
-          variant: "default",
         });
         
-        // Navigate to home page after successful login
         navigate("/");
       } else {
-        throw new Error("Invalid credentials");
+        throw new Error("Invalid email or password");
       }
     } catch (error: any) {
       toast({
         title: "Login failed",
-        description: error.message || "Invalid email or password. Please try again.",
+        description: error.message || "Please try again.",
         variant: "destructive",
       });
     }
