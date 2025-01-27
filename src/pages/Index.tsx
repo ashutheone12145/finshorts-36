@@ -10,22 +10,22 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-grow">
+      <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary to-accent py-20">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-down">
-                Smart Market Intelligence for Modern Investors
+              <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6 animate-fade-down leading-tight">
+                Build Brand and Unlock Your Business Potential
               </h1>
-              <p className="text-xl text-gray-200 mb-8 animate-fade-up">
+              <p className="text-xl text-gray-600 mb-8 animate-fade-up">
                 Get real-time insights, track your portfolio, and make informed investment decisions with MarketIntel.
               </p>
               <div className="space-x-4">
                 <Button
                   size="lg"
                   onClick={() => navigate("/auth/signup")}
-                  className="bg-white text-primary hover:bg-gray-100 transition-all duration-300"
+                  className="bg-primary text-white hover:bg-primary/90 transition-all duration-300 px-8"
                 >
                   Get Started Free
                 </Button>
@@ -33,7 +33,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/features")}
-                  className="text-white border-2 border-white hover:bg-white hover:text-primary transition-all duration-300"
+                  className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 px-8"
                 >
                   Learn More
                 </Button>
@@ -43,21 +43,21 @@ const Index = () => {
         </section>
 
         {/* Features Section */}
-        <section className="py-20">
+        <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Why Choose MarketIntel?
+            <h2 className="text-3xl font-bold text-center mb-12 text-secondary">
+              What We Do to Serve You Best
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-white rounded-lg shadow-md transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+                  className="p-8 bg-white rounded-xl shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-1"
                 >
-                  <div className="text-accent mb-4 text-2xl">
+                  <div className="text-primary mb-4 text-2xl">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-secondary">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
@@ -66,18 +66,18 @@ const Index = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gray-50 py-20">
+        <section className="bg-white py-20">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              Ready to Start Investing Smarter?
+            <h2 className="text-3xl font-bold mb-6 text-secondary">
+              Ready to Start Your Journey?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Join thousands of investors who trust MarketIntel for their market research.
+              Join thousands of businesses who trust MarketIntel for their growth.
             </p>
             <Button
               size="lg"
               onClick={() => navigate("/auth/signup")}
-              className="bg-accent text-white hover:bg-accent/90 transition-all duration-300"
+              className="bg-primary text-white hover:bg-primary/90 transition-all duration-300 px-8"
             >
               Start Free Trial
             </Button>
@@ -93,18 +93,18 @@ const Index = () => {
 const features = [
   {
     icon: "📈",
-    title: "Real-Time Market Data",
-    description: "Access live market data and advanced analytics to stay ahead of market trends.",
+    title: "Market Analysis",
+    description: "Get comprehensive market analysis and insights to make informed decisions.",
   },
   {
-    icon: "📰",
-    title: "Financial News Feed",
-    description: "Get curated news and insights from trusted financial sources worldwide.",
+    icon: "🎯",
+    title: "Strategic Planning",
+    description: "Develop effective strategies based on real-time market data and trends.",
   },
   {
     icon: "📊",
-    title: "Portfolio Tracking",
-    description: "Track your investments and monitor your portfolio performance in real-time.",
+    title: "Performance Tracking",
+    description: "Monitor and optimize your business performance with advanced analytics.",
   },
 ];
 
