@@ -29,28 +29,32 @@ const Login = () => {
 
   const onSubmit = async (data: LoginForm) => {
     try {
-      // Here you would typically make an API call to your backend
+      // Log the login attempt
       console.log("Login attempt:", data);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find((u: any) => u.email === data.email && u.password === data.password);
       
-      // For demonstration, we'll check for a specific test account
-      if (data.email === "test@example.com" && data.password === "password123") {
+      if (user) {
+        // Store logged in user info (in a real app, you'd store a token)
+        localStorage.setItem('currentUser', JSON.stringify({ email: user.email }));
+        
         toast({
           title: "Login successful!",
           description: "Welcome back!",
           variant: "default",
         });
+        
         // Navigate to home page after successful login
         navigate("/");
       } else {
         throw new Error("Invalid credentials");
       }
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Login failed",
-        description: "Invalid email or password. Please try again.",
+        description: error.message || "Invalid email or password. Please try again.",
         variant: "destructive",
       });
     }

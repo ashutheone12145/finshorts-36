@@ -22,6 +22,7 @@ type SignUpForm = z.infer<typeof signUpSchema>;
 const SignUp = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  
   const form = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -33,9 +34,24 @@ const SignUp = () => {
 
   const onSubmit = async (data: SignUpForm) => {
     try {
-      // Here you would typically make an API call to your backend
-      // For now, we'll simulate a successful signup
+      // Log the signup attempt
       console.log("Form submitted:", data);
+      
+      // Store user credentials in localStorage (this is just for demo purposes)
+      // In a real app, you would make an API call to your backend
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const userExists = users.some((user: any) => user.email === data.email);
+      
+      if (userExists) {
+        throw new Error("User already exists");
+      }
+      
+      users.push({
+        email: data.email,
+        password: data.password
+      });
+      
+      localStorage.setItem('users', JSON.stringify(users));
       
       // Show success message
       toast({
@@ -48,10 +64,10 @@ const SignUp = () => {
       setTimeout(() => {
         navigate("/auth/login");
       }, 2000);
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error creating account",
-        description: "Please try again later.",
+        description: error.message || "Please try again later.",
         variant: "destructive",
       });
     }
