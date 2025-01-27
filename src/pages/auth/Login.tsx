@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const loginSchema = z.object({
@@ -17,6 +17,8 @@ type LoginForm = z.infer<typeof loginSchema>;
 
 const Login = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
+  
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -30,15 +32,25 @@ const Login = () => {
       // Here you would typically make an API call to your backend
       console.log("Login attempt:", data);
       
-      toast({
-        title: "Login successful!",
-        description: "Welcome back!",
-        variant: "default",
-      });
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // For demonstration, we'll check for a specific test account
+      if (data.email === "test@example.com" && data.password === "password123") {
+        toast({
+          title: "Login successful!",
+          description: "Welcome back!",
+          variant: "default",
+        });
+        // Navigate to home page after successful login
+        navigate("/");
+      } else {
+        throw new Error("Invalid credentials");
+      }
     } catch (error) {
       toast({
         title: "Login failed",
-        description: "Please check your credentials and try again.",
+        description: "Invalid email or password. Please try again.",
         variant: "destructive",
       });
     }
