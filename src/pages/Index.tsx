@@ -57,9 +57,9 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#348e37]/10 to-white">
       {/* Hero Section with Diagonal Design */}
-      <section className="relative py-20 px-4 bg-gradient-to-r from-green-400 to-emerald-500">
+      <section className="relative py-20 px-4 bg-gradient-to-r from-[#348e37] to-[#348e37]/80">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518495973542-4542c06a5843')] opacity-10 mix-blend-overlay"></div>
         <div className="container mx-auto max-w-6xl relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -132,7 +132,7 @@ const Index = () => {
       </section>
 
       {/* Latest News Section with Horizontal Scroll */}
-      <section className="py-20 bg-gradient-to-r from-green-100 via-emerald-50 to-green-100">
+      <section className="py-20 bg-gradient-to-r from-[#348e37]/10 via-[#348e37]/5 to-[#348e37]/10">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-12 text-green-800">
             Latest Financial News
@@ -174,7 +174,7 @@ const Index = () => {
       {/* CTA Section with Background Image */}
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')] bg-cover bg-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-emerald-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#348e37]/90 to-[#348e37]/90"></div>
         </div>
         <div className="container mx-auto max-w-4xl px-4 text-center relative">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
