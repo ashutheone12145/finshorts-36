@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { useEffect, useState } from "react";
 
 const mockStockData = [
   { name: 'Jan', value: 4000 },
@@ -56,92 +55,9 @@ const features = [
 
 const Index = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
-
-  useEffect(() => {
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-      const userData = JSON.parse(currentUser);
-      setIsLoggedIn(true);
-      setUserEmail(userData.email);
-    }
-  }, []);
-
-  const recentActivity = [
-    {
-      id: 1,
-      title: "Portfolio Update",
-      description: "Your tech sector investments grew by 2.3% this week",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      action: "View Portfolio"
-    },
-    {
-      id: 2,
-      title: "Market Analysis",
-      description: "New AI-powered market analysis report is available",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-      action: "Read Analysis"
-    },
-    {
-      id: 3,
-      title: "Educational Content",
-      description: "Complete your learning path on Technical Analysis",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-      action: "Continue Learning"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#348e37]/10 to-white">
-      {isLoggedIn && (
-        <section className="py-12 bg-gradient-to-r from-[#348e37]/5 via-white to-[#348e37]/5">
-          <div className="container mx-auto max-w-6xl px-4">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-green-800">
-                Welcome back, {userEmail.split('@')[0]}!
-              </h2>
-              <Button
-                variant="ghost"
-                onClick={() => navigate('/dashboard')}
-                className="text-green-600 hover:text-green-700 hover:bg-green-50"
-              >
-                Go to Dashboard →
-              </Button>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {recentActivity.map((activity) => (
-                <div
-                  key={activity.id}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img 
-                      src={activity.image} 
-                      alt={activity.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-green-800">
-                      {activity.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">{activity.description}</p>
-                    <Button
-                      variant="ghost"
-                      className="text-green-600 hover:text-green-700 hover:bg-green-50 transition-all duration-300"
-                      onClick={() => navigate('/dashboard')}
-                    >
-                      {activity.action} →
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-      
       {/* Hero Section with Diagonal Design */}
       <section className="relative py-20 px-4 bg-gradient-to-r from-[#348e37] to-[#348e37]/80">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518495973542-4542c06a5843')] opacity-10 mix-blend-overlay"></div>
