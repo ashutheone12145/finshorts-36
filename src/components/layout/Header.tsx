@@ -7,7 +7,6 @@ export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check authentication status on mount and when localStorage changes
     const checkAuth = () => {
       const currentUser = localStorage.getItem('currentUser');
       if (currentUser) {
@@ -38,7 +37,7 @@ export const Header = () => {
         <div className="flex items-center space-x-4">
           <h1 
             onClick={() => navigate("/")} 
-            className="text-2xl font-bold text-primary cursor-pointer hover:opacity-90 transition-opacity"
+            className="text-2xl font-bold text-primary cursor-pointer"
           >
             FinShorts
           </h1>
@@ -47,21 +46,21 @@ export const Header = () => {
           <Button
             variant="ghost"
             onClick={() => navigate("/dashboard")}
-            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+            className="text-gray-600"
           >
             Dashboard
           </Button>
           <Button
             variant="ghost"
             onClick={() => navigate("/portfolio")}
-            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+            className="text-gray-600"
           >
             Portfolio
           </Button>
           <Button
             variant="ghost"
             onClick={() => navigate("/news")}
-            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+            className="text-gray-600"
           >
             News
           </Button>
@@ -72,7 +71,7 @@ export const Header = () => {
               <Button
                 variant="ghost"
                 onClick={handleLogout}
-                className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+                className="text-gray-600"
               >
                 Logout
               </Button>
@@ -82,13 +81,13 @@ export const Header = () => {
               <Button
                 variant="ghost"
                 onClick={() => navigate("/auth/login")}
-                className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+                className="text-gray-600"
               >
                 Login
               </Button>
               <Button
                 onClick={() => navigate("/auth/signup")}
-                className="bg-primary text-white hover:bg-primary/90 transition-colors duration-200 px-6"
+                className="bg-primary text-white px-6"
               >
                 Sign Up
               </Button>

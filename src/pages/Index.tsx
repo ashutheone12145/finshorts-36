@@ -58,7 +58,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#348e37]/10 to-white">
-      {/* Hero Section with Diagonal Design */}
       <section className="relative py-20 px-4 bg-gradient-to-r from-[#348e37] to-[#348e37]/80">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518495973542-4542c06a5843')] opacity-10 mix-blend-overlay"></div>
         <div className="container mx-auto max-w-6xl relative">
@@ -74,7 +73,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate("/auth/signup")}
-                  className="bg-white text-[#348e37] hover:bg-green-100 px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                  className="bg-white text-[#348e37] px-8 py-2 text-lg font-semibold"
                 >
                   Start Free Trial
                 </Button>
@@ -82,7 +81,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/features")}
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#348e37] px-8 py-2 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="bg-transparent border-2 border-white text-white px-8 py-2 text-lg font-semibold"
                 >
                   Learn More
                 </Button>
@@ -109,13 +108,13 @@ const Index = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                className="bg-white rounded-xl shadow-lg overflow-hidden group"
               >
                 <div className="h-48 overflow-hidden">
                   <img 
                     src={feature.image} 
                     alt={feature.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6 bg-gradient-to-b from-green-50">
@@ -130,7 +129,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Latest News Section with Horizontal Scroll */}
       <section className="py-20 bg-gradient-to-r from-[#348e37]/10 via-[#348e37]/5 to-[#348e37]/10">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-12 text-green-800">
@@ -140,7 +138,7 @@ const Index = () => {
             {mockNews.map((news) => (
               <div
                 key={news.id}
-                className="min-w-[300px] md:min-w-[400px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
+                className="min-w-[300px] md:min-w-[400px] bg-white rounded-xl shadow-sm overflow-hidden flex-shrink-0"
               >
                 <div className="h-48 overflow-hidden">
                   <img 
@@ -159,7 +157,7 @@ const Index = () => {
                   <p className="text-gray-600">{news.description}</p>
                   <Button
                     variant="ghost"
-                    className="mt-4 text-green-600 hover:text-green-700 hover:bg-green-50 transition-all duration-300"
+                    className="mt-4 text-green-600"
                   >
                     Read More →
                   </Button>
@@ -170,7 +168,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section with Background Image */}
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')] bg-cover bg-center">
           <div className="absolute inset-0 bg-gradient-to-r from-[#348e37]/90 to-[#348e37]/90"></div>
@@ -185,7 +182,7 @@ const Index = () => {
           <Button
             size="lg"
             onClick={() => navigate("/auth/signup")}
-            className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="bg-white text-green-700 px-8 py-6 text-lg"
           >
             Get Started Now
           </Button>

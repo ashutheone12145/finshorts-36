@@ -15,12 +15,12 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Product</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/features" className="text-gray-300 hover:text-primary transition-colors duration-200">
+                <Link to="/features" className="text-gray-300">
                   Features
                 </Link>
               </li>
               <li>
-                <Link to="/pricing" className="text-gray-300 hover:text-primary transition-colors duration-200">
+                <Link to="/pricing" className="text-gray-300">
                   Pricing
                 </Link>
               </li>
@@ -30,12 +30,12 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-primary transition-colors duration-200">
+                <Link to="/about" className="text-gray-300">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary transition-colors duration-200">
+                <Link to="/contact" className="text-gray-300">
                   Contact
                 </Link>
               </li>
@@ -45,12 +45,12 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/privacy" className="text-gray-300 hover:text-primary transition-colors duration-200">
+                <Link to="/privacy" className="text-gray-300">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-300 hover:text-primary transition-colors duration-200">
+                <Link to="/terms" className="text-gray-300">
                   Terms of Service
                 </Link>
               </li>
