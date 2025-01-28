@@ -45,10 +45,10 @@ export const Header = () => {
         <nav className="hidden md:flex items-center space-x-4">
           <Button
             variant="ghost"
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/market-overview")}
             className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
           >
-            Dashboard
+            Market Overview
           </Button>
           <Button
             variant="ghost"
