@@ -44,19 +44,19 @@
   }
 
   .card-hover {
-    @apply shadow-lg;
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
 
   .btn-primary {
-    @apply px-4 py-2 bg-primary text-primary-foreground rounded-lg;
+    @apply px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 bg-secondary text-secondary-foreground rounded-lg;
+    @apply px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:opacity-90 transition-opacity;
   }
 
   .hover-scale {
-    @apply scale-100;
+    @apply transition-transform duration-200 hover:scale-105;
   }
 
   .fade-in {
