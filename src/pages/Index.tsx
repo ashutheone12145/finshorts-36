@@ -37,18 +37,18 @@ const mockNews = [
 
 const features = [
   {
-    title: "Real-Time Analytics",
-    description: "Get instant market insights with our advanced analytics platform",
+    title: "Real-Time Market Updates",
+    description: "Stay informed with our live market data and insights",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
   },
   {
-    title: "Expert Guidance",
-    description: "Access professional investment recommendations",
+    title: "Comprehensive Coverage",
+    description: "Access news from various financial sectors",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
   },
   {
-    title: "Portfolio Management",
-    description: "Manage and track your investments in one place",
+    title: "Market Analysis",
+    description: "Understand market trends with our detailed analysis",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f"
   }
 ];
@@ -65,18 +65,18 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-white">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight animate-fade-down">
-                Smart Investment Decisions Start Here
+                Your Source for Financial News
               </h1>
               <p className="text-xl opacity-90 animate-fade-up">
-                Get real-time market insights, advanced analytics, and expert recommendations to optimize your investment strategy.
+                Get real-time market insights, comprehensive news coverage, and detailed market analysis - completely free.
               </p>
               <div className="space-x-4 pt-4">
                 <Button
                   size="lg"
-                  onClick={() => navigate("/auth/signup")}
+                  onClick={() => navigate("/news")}
                   className="bg-white text-green-600 hover:bg-green-50 px-8 py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  Start Free Trial
+                  Browse Latest News
                 </Button>
               </div>
             </div>
@@ -163,24 +163,24 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section with Background Image */}
+      {/* Final CTA Section */}
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')] bg-cover bg-center">
           <div className="absolute inset-0 bg-gradient-to-r from-[#348e37]/90 to-[#348e37]/90"></div>
         </div>
         <div className="container mx-auto max-w-4xl px-4 text-center relative">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Ready to Transform Your Investment Strategy?
+            Stay Informed with FinShorts
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Join thousands of investors who trust MarketIntel for their financial decisions.
+            Join our community of readers who trust FinShorts for their daily financial news.
           </p>
           <Button
             size="lg"
-            onClick={() => navigate("/auth/signup")}
+            onClick={() => navigate("/news")}
             className="bg-white text-green-700 hover:bg-green-50 px-8 py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            Get Started Now
+            Read Latest News
           </Button>
         </div>
       </section>

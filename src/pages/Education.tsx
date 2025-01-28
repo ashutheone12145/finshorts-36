@@ -3,32 +3,32 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const educationContent = [
   {
     id: 1,
-    title: "Investment Basics",
+    title: "Market Basics",
     topics: [
-      "Understanding Stocks and Bonds",
-      "Portfolio Diversification",
-      "Risk Management",
-      "Market Analysis Fundamentals"
+      "Understanding Market Terms",
+      "Reading Financial News",
+      "Market Indicators",
+      "Economic Calendar Guide"
     ]
   },
   {
     id: 2,
-    title: "Technical Analysis",
+    title: "Market Analysis",
     topics: [
-      "Chart Patterns",
-      "Technical Indicators",
-      "Trading Strategies",
-      "Market Trends"
+      "Market Trends",
+      "Global Market Events",
+      "Economic Reports",
+      "Market Updates"
     ]
   },
   {
     id: 3,
-    title: "Fundamental Analysis",
+    title: "Financial News Guide",
     topics: [
-      "Financial Statements",
-      "Company Valuation",
-      "Industry Analysis",
-      "Economic Indicators"
+      "News Reading Tips",
+      "Market News Analysis",
+      "Financial Terms Guide",
+      "News Impact Analysis"
     ]
   }
 ];
@@ -36,7 +36,7 @@ const educationContent = [
 const Education = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Financial Education</h1>
+      <h1 className="text-3xl font-bold mb-8">Financial News Guide</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {educationContent.map((section) => (
@@ -60,16 +60,16 @@ const Education = () => {
 
       <Card className="mt-8">
         <CardHeader>
-          <CardTitle>Getting Started</CardTitle>
+          <CardTitle>About Our Resources</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-gray-600 mb-4">
-            Welcome to our educational resources! Whether you're new to investing or looking to expand your knowledge,
-            our comprehensive guides and tutorials will help you make informed investment decisions.
+            Welcome to our free financial news resources! We provide comprehensive guides to help you better understand
+            and interpret financial news and market events.
           </p>
           <p className="text-gray-600">
-            Start with the basics and progressively move to more advanced topics. Each section includes practical
-            examples and real-world applications to help you better understand the concepts.
+            Our guides are designed to help readers of all levels understand financial news better. Browse through our
+            sections to enhance your financial news reading experience.
           </p>
         </CardContent>
       </Card>

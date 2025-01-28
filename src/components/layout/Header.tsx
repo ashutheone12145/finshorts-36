@@ -103,7 +103,7 @@ export const Header = () => {
                 onClick={() => navigate("/auth/signup")}
                 className="bg-primary text-white hover:bg-primary/90 transition-colors duration-200 px-6"
               >
-                Sign Up
+                Join Free
               </Button>
             </>
           )}
