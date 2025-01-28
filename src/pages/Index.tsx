@@ -238,7 +238,7 @@ const Index = () => {
         </>
       ) : (
         <>
-          {/* Hero Section with Diagonal Design */}
+          {/* Hero Section */}
           <section className="relative py-20 px-4 bg-gradient-to-r from-[#348e37] to-[#348e37]/80">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518495973542-4542c06a5843')] opacity-10 mix-blend-overlay"></div>
             <div className="container mx-auto max-w-6xl relative">
@@ -275,7 +275,7 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Features Section with Overlapping Cards */}
+          {/* Features Section */}
           <section className="py-20 -mt-10">
             <div className="container mx-auto max-w-6xl px-4">
               <div className="grid md:grid-cols-3 gap-8 relative">
@@ -313,7 +313,7 @@ const Index = () => {
                 {mockNews.map((news) => (
                   <div
                     key={news.id}
-                    className="min-w-[50px] md:min-w-[50px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
+                    className="min-w-[180px] md:min-w-[220px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
                   >
                     <div className="h-40 overflow-hidden">
                       <img 
