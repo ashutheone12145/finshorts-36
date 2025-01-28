@@ -82,7 +82,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/features")}
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#348e37] px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#348e37] px-8 py-2 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   Learn More
                 </Button>
@@ -102,7 +102,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/* Features Section with Overlapping Cards */}
+
       <section className="py-20 -mt-10">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="grid md:grid-cols-3 gap-8 relative">
