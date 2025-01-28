@@ -74,7 +74,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate("/auth/signup")}
-                  className="bg-white text-green-600 hover:bg-green-50 px-8 py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="bg-white text-[#348e37] hover:bg-green-50 px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   Start Free Trial
                 </Button>
@@ -82,7 +82,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/features")}
-                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-6 text-lg transition-all duration-300"
+                  className="border-2 border-white text-white hover:bg-white hover:text-[#348e37] px-8 py-6 text-lg transition-all duration-300"
                 >
                   Learn More
                 </Button>
@@ -95,7 +95,7 @@ const Index = () => {
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
-                  <Line type="monotone" dataKey="value" stroke="#059669" strokeWidth={2} />
+                  <Line type="monotone" dataKey="value" stroke="#348e37" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
