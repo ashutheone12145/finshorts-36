@@ -39,7 +39,6 @@ const sectorPerformance = [
   { sector: "Consumer", change: "+0.3%", volume: "2.4B" }
 ];
 
-// Add the missing features array
 const features = [
   {
     title: "Real-Time Market Data",
@@ -58,7 +57,6 @@ const features = [
   }
 ];
 
-// Add the missing mockNews array
 const mockNews = [
   {
     id: 1,
@@ -98,7 +96,6 @@ const Index = () => {
       if (navigator.share) {
         await navigator.share(shareData);
       } else {
-        // Fallback: Copy to clipboard
         await navigator.clipboard.writeText(window.location.href);
         alert('Link copied to clipboard!');
       }
@@ -316,7 +313,7 @@ const Index = () => {
                 {mockNews.map((news) => (
                   <div
                     key={news.id}
-                    className="min-w-[250px] md:min-w-[300px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
+                    className="min-w-[50px] md:min-w-[50px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
                   >
                     <div className="h-40 overflow-hidden">
                       <img 
