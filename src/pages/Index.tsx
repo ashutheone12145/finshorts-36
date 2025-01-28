@@ -82,7 +82,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   onClick={() => navigate("/features")}
-                  className="border-2 border-white text-white hover:bg-white hover:text-[#348e37] px-8 py-6 text-lg transition-all duration-300"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#348e37] px-8 py-6 text-lg font-semibold transition-all duration-300"
                 >
                   Learn More
                 </Button>
