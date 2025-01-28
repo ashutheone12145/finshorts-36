@@ -87,6 +87,26 @@ const Index = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const handleShare = async () => {
+    const shareData = {
+      title: featuredPost.title,
+      text: featuredPost.description,
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
+
   useEffect(() => {
     const checkAuth = () => {
       const currentUser = localStorage.getItem('currentUser');
@@ -124,11 +144,11 @@ const Index = () => {
                     <span className="text-sm font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full">
                       {featuredPost.category}
                     </span>
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center gap-4">
                       <Button variant="ghost" size="icon">
                         <ChevronLeft className="h-5 w-5" />
                       </Button>
-                      <Button variant="ghost" size="icon">
+                      <Button variant="ghost" size="icon" onClick={handleShare}>
                         <Share2 className="h-5 w-5" />
                       </Button>
                       <Button variant="ghost" size="icon">
