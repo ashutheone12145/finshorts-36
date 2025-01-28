@@ -7,7 +7,6 @@ export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check authentication status on mount and when localStorage changes
     const checkAuth = () => {
       const currentUser = localStorage.getItem('currentUser');
       if (currentUser) {
@@ -43,7 +42,7 @@ export const Header = () => {
             FinShorts
           </h1>
         </div>
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-4">
           <Button
             variant="ghost"
             onClick={() => navigate("/dashboard")}
@@ -60,10 +59,24 @@ export const Header = () => {
           </Button>
           <Button
             variant="ghost"
+            onClick={() => navigate("/market-analysis")}
+            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+          >
+            Market Analysis
+          </Button>
+          <Button
+            variant="ghost"
             onClick={() => navigate("/news")}
             className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
           >
             News
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={() => navigate("/education")}
+            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+          >
+            Education
           </Button>
         </nav>
         <div className="flex items-center space-x-4">
