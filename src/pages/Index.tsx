@@ -39,6 +39,50 @@ const sectorPerformance = [
   { sector: "Consumer", change: "+0.3%", volume: "2.4B" }
 ];
 
+// Add the missing features array
+const features = [
+  {
+    title: "Real-Time Market Data",
+    description: "Stay updated with live market movements and instant price updates across global markets.",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
+  },
+  {
+    title: "Expert Analysis",
+    description: "Get insights from financial experts and detailed market analysis to make informed decisions.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+  },
+  {
+    title: "Comprehensive Coverage",
+    description: "Access news and updates from all major financial markets worldwide.",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f"
+  }
+];
+
+// Add the missing mockNews array
+const mockNews = [
+  {
+    id: 1,
+    title: "Federal Reserve Maintains Interest Rates",
+    description: "The Federal Reserve kept interest rates steady at its latest meeting, signaling a cautious approach to monetary policy.",
+    category: "Economy",
+    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+  },
+  {
+    id: 2,
+    title: "Tech Giants Report Strong Earnings",
+    description: "Major technology companies exceeded market expectations in their latest quarterly earnings reports.",
+    category: "Technology",
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0",
+  },
+  {
+    id: 3,
+    title: "Global Markets Rally on Economic Data",
+    description: "Stock markets worldwide surge as new economic indicators suggest robust growth in major economies.",
+    category: "Markets",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f",
+  }
+];
+
 const Index = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
