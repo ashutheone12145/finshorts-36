@@ -40,7 +40,7 @@ export const Header = () => {
             onClick={() => navigate("/")} 
             className="text-2xl font-bold text-primary cursor-pointer hover:opacity-90 transition-opacity"
           >
-            MarketIntel
+            FinShorts
           </h1>
         </div>
         <nav className="hidden md:flex items-center space-x-6">
