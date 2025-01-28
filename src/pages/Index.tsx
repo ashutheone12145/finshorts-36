@@ -74,7 +74,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate("/auth/signup")}
-                  className="bg-white text-[#348e37] hover:bg-green-50 px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="bg-white text-[#348e37] hover:bg-green-50 px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 >
                   Start Free Trial
                 </Button>
@@ -102,7 +102,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
       {/* Features Section with Overlapping Cards */}
       <section className="py-20 -mt-10">
         <div className="container mx-auto max-w-6xl px-4">
