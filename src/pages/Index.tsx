@@ -74,7 +74,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate("/auth/signup")}
-                  className="bg-white text-[#348e37] hover:bg-green-50 px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                  className="bg-white text-[#348e37] hover:bg-green-100 px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 >
                   Start Free Trial
                 </Button>
