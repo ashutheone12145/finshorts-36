@@ -316,9 +316,9 @@ const Index = () => {
                 {mockNews.map((news) => (
                   <div
                     key={news.id}
-                    className="min-w-[300px] md:min-w-[400px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
+                    className="min-w-[250px] md:min-w-[300px] bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex-shrink-0"
                   >
-                    <div className="h-48 overflow-hidden">
+                    <div className="h-40 overflow-hidden">
                       <img 
                         src={news.image} 
                         alt={news.title}
