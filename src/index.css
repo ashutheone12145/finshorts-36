@@ -53,3 +53,16 @@
 .btn-secondary {
   @apply px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:opacity-90 transition-opacity;
 }
+
+/* Modern Animations */
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.slide-in {
+  @apply animate-slide-in;
+}
