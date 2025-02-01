@@ -11,7 +11,7 @@ const mockNews = [
     source: "Financial Times",
     time: "July 25, 2023",
     summary: "Understanding the art of building meaningful connections and relationships in a world that often favors extroversion.",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=800&auto=format&fit=crop"
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const mockNews = [
     source: "Reuters",
     time: "July 20, 2023",
     summary: "Revolutionary aerospace technology promises to transform international travel with unprecedented speed and efficiency.",
-    image: "https://images.unsplash.com/photo-1559627755-43a9e06e39e7?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop"
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const mockNews = [
     source: "Bloomberg",
     time: "July 18, 2023",
     summary: "Local communities demonstrate extraordinary humanitarian efforts in times of crisis, earning international recognition.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&auto=format&fit=crop"
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const mockNews = [
     source: "The Guardian",
     time: "July 15, 2023",
     summary: "Innovative learning platforms offer diverse opportunities for personal and professional growth in the coming year.",
-    image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop"
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const mockNews = [
     source: "TechCrunch",
     time: "July 14, 2023",
     summary: "Latest developments in artificial intelligence demonstrate unprecedented capabilities in complex problem-solving scenarios.",
-    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop"
   },
   {
     id: 6,
@@ -56,7 +56,7 @@ const mockNews = [
     source: "National Geographic",
     time: "July 13, 2023",
     summary: "Innovative ocean cleanup initiative successfully removes thousands of tons of plastic waste from the Pacific Ocean.",
-    image: "https://images.unsplash.com/photo-1484291470158-b8f8d608850d?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&auto=format&fit=crop"
   },
   {
     id: 7,
@@ -65,7 +65,7 @@ const mockNews = [
     source: "Health Journal",
     time: "July 12, 2023",
     summary: "Research confirms long-term health benefits of Mediterranean dietary patterns in large-scale study.",
-    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=800&auto=format&fit=crop"
   },
   {
     id: 8,
@@ -74,7 +74,7 @@ const mockNews = [
     source: "Space News",
     time: "July 11, 2023",
     summary: "Private space company reveals plans for first commercial space tourism mission scheduled for next year.",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop"
   }
 ];
 
