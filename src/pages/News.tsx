@@ -3,10 +3,10 @@ import { Separator } from "@/components/ui/separator";
 import { Clock, ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const mockNews = [
+const latestNews = [
   {
     id: 1,
-    title: "The Shy Person's Guide to Winning Friends and Influencing People",
+    title: "Those who have created peace, are the world better?",
     category: "Society",
     source: "Financial Times",
     time: "July 25, 2023",
@@ -24,8 +24,8 @@ const mockNews = [
   },
   {
     id: 3,
-    title: "Greek Islanders are to be Nominated for Peace Prize",
-    category: "World",
+    title: "The Shy Person's Guide to Winning Friends and Influencing People",
+    category: "Society",
     source: "Bloomberg",
     time: "July 18, 2023",
     summary: "Local communities demonstrate extraordinary humanitarian efforts in times of crisis, earning international recognition.",
@@ -33,8 +33,8 @@ const mockNews = [
   },
   {
     id: 4,
-    title: "10 Creative Courses That Will Keep You Learning New Things Next Year",
-    category: "Education",
+    title: "Bradley Cooper's 'Maestro' Stirs Wellness At Sundance Film Festival Opening",
+    category: "Entertainment",
     source: "The Guardian",
     time: "July 15, 2023",
     summary: "Innovative learning platforms offer diverse opportunities for personal and professional growth in the coming year.",
@@ -42,8 +42,8 @@ const mockNews = [
   },
   {
     id: 5,
-    title: "AI Breakthrough: New Model Shows Human-Like Problem Solving",
-    category: "Technology",
+    title: "Greek Islanders are to be Nominated for Peace Prize",
+    category: "World",
     source: "TechCrunch",
     time: "July 14, 2023",
     summary: "Latest developments in artificial intelligence demonstrate unprecedented capabilities in complex problem-solving scenarios.",
@@ -51,8 +51,8 @@ const mockNews = [
   },
   {
     id: 6,
-    title: "Ocean Cleanup Project Reaches Major Milestone",
-    category: "Environment",
+    title: "35th Anniversary of the Space Shuttle Challenge Catastrophe, in pictures",
+    category: "History",
     source: "National Geographic",
     time: "July 13, 2023",
     summary: "Innovative ocean cleanup initiative successfully removes thousands of tons of plastic waste from the Pacific Ocean.",
@@ -60,8 +60,8 @@ const mockNews = [
   },
   {
     id: 7,
-    title: "New Study Reveals Benefits of Mediterranean Diet",
-    category: "Health",
+    title: "Uber is Using Phone Gyrometers to Check Whether Drivers go Over Speed",
+    category: "Technology",
     source: "Health Journal",
     time: "July 12, 2023",
     summary: "Research confirms long-term health benefits of Mediterranean dietary patterns in large-scale study.",
@@ -69,24 +69,13 @@ const mockNews = [
   },
   {
     id: 8,
-    title: "Space Tourism Company Announces First Commercial Flight",
-    category: "Science",
+    title: "10 Creative Courses That Will Keep You Learning New Things Next Year",
+    category: "Education",
     source: "Space News",
     time: "July 11, 2023",
     summary: "Private space company reveals plans for first commercial space tourism mission scheduled for next year.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop"
   }
-];
-
-const latestNews = [
-  "Those who have created peace, are the world better?",
-  "This Concept Jet Could Get You From New York To London in Under 11 Minutes",
-  "The Shy Person's Guide to Winning Friends and Influencing People",
-  "Bradley Cooper's 'Maestro' Stirs Wellness At Sundance Film Festival Opening",
-  "Greek Islanders are to be Nominated for Peace Prize",
-  "35th Anniversary of the Space Shuttle Challenge Catastrophe, in pictures",
-  "Uber is Using Phone Gyrometers to Check Whether Drivers go Over Speed",
-  "10 Creative Courses That Will Keep You Learning New Things Next Year"
 ];
 
 const News = () => {
@@ -104,13 +93,13 @@ const News = () => {
                 </span>
               </h2>
               <ul className="space-y-4">
-                {latestNews.map((title, index) => (
+                {latestNews.map((news, index) => (
                   <li key={index} className="group">
                     <a 
                       href="#" 
                       className="block text-sm leading-snug hover:text-primary transition-colors duration-200"
                     >
-                      {title}
+                      {news.title}
                     </a>
                     {index < latestNews.length - 1 && (
                       <Separator className="mt-4" />
@@ -129,27 +118,27 @@ const News = () => {
             <article className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-4">
                 <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-                  {mockNews[0].category}
+                  {latestNews[0].category}
                 </span>
                 <h1 className="text-3xl md:text-4xl font-serif font-bold leading-tight">
-                  {mockNews[0].title}
+                  {latestNews[0].title}
                 </h1>
                 <p className="text-gray-600 leading-relaxed">
-                  {mockNews[0].summary}
+                  {latestNews[0].summary}
                 </p>
                 <div className="flex items-center text-sm text-gray-500 gap-4">
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
-                    <span>{mockNews[0].time}</span>
+                    <span>{latestNews[0].time}</span>
                   </div>
                   <span>•</span>
-                  <span>{mockNews[0].source}</span>
+                  <span>{latestNews[0].source}</span>
                 </div>
               </div>
               <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
                 <img 
-                  src={mockNews[0].image} 
-                  alt={mockNews[0].title}
+                  src={latestNews[0].image} 
+                  alt={latestNews[0].title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
@@ -162,7 +151,7 @@ const News = () => {
           <div className="mb-12">
             <ScrollArea className="h-[800px] w-full rounded-md">
               <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 pr-4">
-                {mockNews.slice(1).map((article) => (
+                {latestNews.slice(1).map((article) => (
                   <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative aspect-[16/9]">
                       <img 
