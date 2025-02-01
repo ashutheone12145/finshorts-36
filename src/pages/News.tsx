@@ -88,9 +88,19 @@ const News = () => {
   const { toast } = useToast();
 
   const toggleBookmark = (id: number) => {
-    setBookmarked(prev => 
-      prev.includes(id) ? prev.filter(b => b !== id) : [...prev, id]
-    );
+    setBookmarked(prev => {
+      const newBookmarks = prev.includes(id) 
+        ? prev.filter(b => b !== id) 
+        : [...prev, id];
+      
+      // Save bookmarked articles to localStorage
+      const bookmarkedArticles = latestNews.filter(article => 
+        newBookmarks.includes(article.id)
+      );
+      localStorage.setItem('bookmarkedArticles', JSON.stringify(bookmarkedArticles));
+      
+      return newBookmarks;
+    });
   };
 
   const handleRating = (id: number, rating: number) => {

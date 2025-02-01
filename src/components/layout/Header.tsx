@@ -57,6 +57,13 @@ export const Header = () => {
           >
             News
           </Button>
+          <Button
+            variant="ghost"
+            onClick={() => navigate("/saved-articles")}
+            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
+          >
+            Saved Articles
+          </Button>
         </nav>
         <div className="flex items-center space-x-4">
           {isLoggedIn ? (

@@ -10,6 +10,7 @@ import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
 import MarketAnalysis from "./pages/MarketAnalysis";
 import News from "./pages/News";
+import SavedArticles from "./pages/SavedArticles";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
               <Route path="/auth/login" element={<Login />} />
               <Route path="/market-analysis" element={<MarketAnalysis />} />
               <Route path="/news" element={<News />} />
+              <Route path="/saved-articles" element={<SavedArticles />} />
             </Routes>
           </main>
           <Footer />
