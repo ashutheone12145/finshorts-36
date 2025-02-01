@@ -4,6 +4,7 @@ import { Clock, ChevronRight, Bookmark, Share2, Star, ExternalLink } from "lucid
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 const latestNews = [
   {
@@ -84,6 +85,7 @@ const News = () => {
   const [selectedNews, setSelectedNews] = useState(latestNews[0]);
   const [bookmarked, setBookmarked] = useState<number[]>([]);
   const [ratings, setRatings] = useState<{[key: number]: number}>({});
+  const { toast } = useToast();
 
   const toggleBookmark = (id: number) => {
     setBookmarked(prev => 
@@ -95,10 +97,36 @@ const News = () => {
     setRatings(prev => ({...prev, [id]: rating}));
   };
 
+  const handleShare = async (title: string, summary: string) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title,
+          text: summary,
+          url: window.location.href
+        });
+      } catch (error) {
+        if (error instanceof Error && error.name !== 'AbortError') {
+          toast({
+            title: "Unable to share",
+            description: "You can copy the URL from your browser's address bar",
+            variant: "destructive"
+          });
+        }
+      }
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      toast({
+        title: "Share",
+        description: "Copy the URL from your browser's address bar to share this article",
+      });
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Side News Bar - Takes up 1 column on large screens */}
+        {/* Side News Bar */}
         <div className="lg:col-span-1">
           <div className="sticky top-4">
             <div className="bg-white rounded-lg shadow-sm p-6">
@@ -131,12 +159,10 @@ const News = () => {
           </div>
         </div>
 
-        {/* Main Content - Takes up 3 columns on large screens */}
+        {/* Main Content */}
         <div className="lg:col-span-3">
-          {/* Featured Article */}
           <div className="mb-12">
             <article className="animate-fade-in">
-              {/* Image Section */}
               <div className="relative aspect-[16/9] rounded-lg overflow-hidden mb-6">
                 <img 
                   src={selectedNews.image} 
@@ -145,7 +171,6 @@ const News = () => {
                 />
               </div>
 
-              {/* Content Section */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
@@ -163,11 +188,7 @@ const News = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => navigator.share?.({
-                        title: selectedNews.title,
-                        text: selectedNews.summary,
-                        url: window.location.href
-                      })}
+                      onClick={() => handleShare(selectedNews.title, selectedNews.summary)}
                     >
                       <Share2 className="h-5 w-5" />
                     </Button>
@@ -191,7 +212,6 @@ const News = () => {
                   {selectedNews.summary}
                 </p>
 
-                {/* Rating Section */}
                 <div className="flex items-center gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Button
@@ -208,7 +228,6 @@ const News = () => {
                   ))}
                 </div>
 
-                {/* Links Section */}
                 <div className="flex items-center gap-4">
                   <Button className="flex items-center gap-2">
                     Read Full Article <ExternalLink className="h-4 w-4" />
@@ -220,8 +239,6 @@ const News = () => {
               </div>
             </article>
           </div>
-
-          <Separator className="my-8" />
 
           {/* News Grid */}
           <div className="mb-12">
