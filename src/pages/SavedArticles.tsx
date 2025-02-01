@@ -1,8 +1,15 @@
 import { Card } from "@/components/ui/card";
-import { Clock, Share2, Star, ExternalLink } from "lucide-react";
+import { Clock, Share2, Star, ExternalLink, MoreVertical, Pencil, Trash2, Copy, Link } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const SavedArticles = () => {
   const [bookmarkedArticles, setBookmarkedArticles] = useState<any[]>([]);
@@ -63,6 +70,24 @@ const SavedArticles = () => {
     setRatings(prev => ({...prev, [id]: rating}));
   };
 
+  const handleRemoveArticle = (id: number) => {
+    const updatedArticles = bookmarkedArticles.filter(article => article.id !== id);
+    setBookmarkedArticles(updatedArticles);
+    localStorage.setItem('bookmarkedArticles', JSON.stringify(updatedArticles));
+    toast({
+      title: "Article removed",
+      description: "The article has been removed from your saved articles",
+    });
+  };
+
+  const handleCopyLink = (url: string) => {
+    navigator.clipboard.writeText(url);
+    toast({
+      title: "Link copied",
+      description: "Article link has been copied to clipboard",
+    });
+  };
+
   if (bookmarkedArticles.length === 0) {
     return (
       <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -89,6 +114,30 @@ const SavedArticles = () => {
                 alt={article.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
+              <div className="absolute top-2 right-2">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="bg-white/90 hover:bg-white">
+                      <MoreVertical className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => handleCopyLink(article.url)}>
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy link
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => window.open(article.url, '_blank')}>
+                      <Link className="mr-2 h-4 w-4" />
+                      Open in new tab
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => handleRemoveArticle(article.id)} className="text-red-600">
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Remove
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
             <div className="p-6 space-y-4">
               <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
