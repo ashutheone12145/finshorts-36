@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Clock, ChevronRight, Bookmark, Share2, Star, ExternalLink } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Clock, Share2, Star, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
@@ -12,10 +11,27 @@ const SavedArticles = () => {
 
   // Get the bookmarked articles from localStorage
   useEffect(() => {
-    const savedBookmarks = localStorage.getItem('bookmarkedArticles');
-    if (savedBookmarks) {
-      setBookmarkedArticles(JSON.parse(savedBookmarks));
-    }
+    const loadBookmarkedArticles = () => {
+      const savedBookmarks = localStorage.getItem('bookmarkedArticles');
+      if (savedBookmarks) {
+        try {
+          const parsedBookmarks = JSON.parse(savedBookmarks);
+          // Ensure we're working with an array
+          setBookmarkedArticles(Array.isArray(parsedBookmarks) ? parsedBookmarks : []);
+        } catch (error) {
+          console.error('Error parsing bookmarked articles:', error);
+          setBookmarkedArticles([]);
+        }
+      }
+    };
+
+    loadBookmarkedArticles();
+    // Add event listener to update bookmarks if they change in another tab
+    window.addEventListener('storage', loadBookmarkedArticles);
+    
+    return () => {
+      window.removeEventListener('storage', loadBookmarkedArticles);
+    };
   }, []);
 
   const handleShare = async (title: string, summary: string) => {
