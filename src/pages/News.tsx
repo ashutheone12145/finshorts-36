@@ -146,7 +146,7 @@ const News = () => {
                   <span>{mockNews[0].source}</span>
                 </div>
               </div>
-              <div className="relative h-[400px] rounded-lg overflow-hidden">
+              <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
                 <img 
                   src={mockNews[0].image} 
                   alt={mockNews[0].title}
@@ -164,7 +164,7 @@ const News = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 pr-4">
                 {mockNews.slice(1).map((article) => (
                   <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative h-48">
+                    <div className="relative aspect-[16/9]">
                       <img 
                         src={article.image} 
                         alt={article.title}
