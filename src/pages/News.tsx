@@ -121,14 +121,8 @@ const News = () => {
 
           <Separator className="my-8" />
 
-          {/* Latest News Grid */}
+          {/* News Grid */}
           <div className="mb-12">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold">Latest News</h2>
-              <button className="text-primary hover:text-primary/80 flex items-center gap-1">
-                More <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {mockNews.slice(1).map((article) => (
                 <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
