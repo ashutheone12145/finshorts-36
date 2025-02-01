@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Clock, ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useState } from "react";
 
 const latestNews = [
   {
@@ -79,6 +80,8 @@ const latestNews = [
 ];
 
 const News = () => {
+  const [selectedNews, setSelectedNews] = useState(latestNews[0]);
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -95,12 +98,16 @@ const News = () => {
               <ul className="space-y-4">
                 {latestNews.map((news, index) => (
                   <li key={index} className="group">
-                    <a 
-                      href="#" 
-                      className="block text-sm leading-snug hover:text-primary transition-colors duration-200"
+                    <button 
+                      onClick={() => setSelectedNews(news)}
+                      className={`block w-full text-left text-sm leading-snug transition-colors duration-200 ${
+                        selectedNews.id === news.id 
+                          ? "text-primary font-medium" 
+                          : "hover:text-primary"
+                      }`}
                     >
                       {news.title}
-                    </a>
+                    </button>
                     {index < latestNews.length - 1 && (
                       <Separator className="mt-4" />
                     )}
@@ -115,31 +122,31 @@ const News = () => {
         <div className="lg:col-span-3">
           {/* Featured Article */}
           <div className="mb-12">
-            <article className="grid md:grid-cols-2 gap-8 items-center">
+            <article className="grid md:grid-cols-2 gap-8 items-center animate-fade-in">
               <div className="space-y-4">
                 <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-                  {latestNews[0].category}
+                  {selectedNews.category}
                 </span>
                 <h1 className="text-3xl md:text-4xl font-serif font-bold leading-tight">
-                  {latestNews[0].title}
+                  {selectedNews.title}
                 </h1>
                 <p className="text-gray-600 leading-relaxed">
-                  {latestNews[0].summary}
+                  {selectedNews.summary}
                 </p>
                 <div className="flex items-center text-sm text-gray-500 gap-4">
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
-                    <span>{latestNews[0].time}</span>
+                    <span>{selectedNews.time}</span>
                   </div>
                   <span>•</span>
-                  <span>{latestNews[0].source}</span>
+                  <span>{selectedNews.source}</span>
                 </div>
               </div>
               <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
                 <img 
-                  src={latestNews[0].image} 
-                  alt={latestNews[0].title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  src={selectedNews.image} 
+                  alt={selectedNews.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
             </article>
@@ -151,13 +158,17 @@ const News = () => {
           <div className="mb-12">
             <ScrollArea className="h-[800px] w-full rounded-md">
               <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 pr-4">
-                {latestNews.slice(1).map((article) => (
-                  <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                {latestNews.filter(news => news.id !== selectedNews.id).map((article) => (
+                  <Card 
+                    key={article.id} 
+                    className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in cursor-pointer"
+                    onClick={() => setSelectedNews(article)}
+                  >
                     <div className="relative aspect-[16/9]">
                       <img 
                         src={article.image} 
                         alt={article.title}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                     <div className="p-6 space-y-4">
