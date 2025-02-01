@@ -45,20 +45,6 @@ export const Header = () => {
         <nav className="hidden md:flex items-center space-x-4">
           <Button
             variant="ghost"
-            onClick={() => navigate("/market-overview")}
-            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
-          >
-            Market Overview
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/portfolio")}
-            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
-          >
-            Portfolio
-          </Button>
-          <Button
-            variant="ghost"
             onClick={() => navigate("/market-analysis")}
             className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
           >
@@ -70,13 +56,6 @@ export const Header = () => {
             className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
           >
             News
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/education")}
-            className="text-gray-600 hover:text-primary hover:bg-transparent transition-colors duration-200"
-          >
-            Education
           </Button>
         </nav>
         <div className="flex items-center space-x-4">
