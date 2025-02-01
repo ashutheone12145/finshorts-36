@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Clock } from "lucide-react";
+import { Clock, ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const mockNews = [
@@ -92,7 +92,36 @@ const latestNews = [
 const News = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Side News Bar - Takes up 1 column on large screens */}
+        <div className="lg:col-span-1">
+          <div className="sticky top-4">
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <h2 className="text-xl font-bold mb-6 flex justify-between items-center">
+                Latest News
+                <span className="text-sm text-primary hover:text-primary/80 cursor-pointer">
+                  More...
+                </span>
+              </h2>
+              <ul className="space-y-4">
+                {latestNews.map((title, index) => (
+                  <li key={index} className="group">
+                    <a 
+                      href="#" 
+                      className="block text-sm leading-snug hover:text-primary transition-colors duration-200"
+                    >
+                      {title}
+                    </a>
+                    {index < latestNews.length - 1 && (
+                      <Separator className="mt-4" />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* Main Content - Takes up 3 columns on large screens */}
         <div className="lg:col-span-3">
           {/* Featured Article */}
@@ -132,12 +161,9 @@ const News = () => {
           {/* News Grid */}
           <div className="mb-12">
             <ScrollArea className="h-[800px] w-full rounded-md">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pr-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 pr-4">
                 {mockNews.slice(1).map((article) => (
-                  <Card 
-                    key={article.id} 
-                    className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col"
-                  >
+                  <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="relative h-48">
                       <img 
                         src={article.image} 
@@ -145,19 +171,19 @@ const News = () => {
                         className="absolute inset-0 w-full h-full object-cover"
                       />
                     </div>
-                    <div className="p-4 flex flex-col flex-grow">
-                      <span className="inline-block px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-2 w-fit">
+                    <div className="p-6 space-y-4">
+                      <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
                         {article.category}
                       </span>
-                      <h3 className="text-lg font-semibold leading-tight mb-2 line-clamp-2 flex-grow">
+                      <h3 className="text-xl font-bold leading-tight">
                         {article.title}
                       </h3>
-                      <p className="text-gray-600 text-sm line-clamp-2 mb-4">
+                      <p className="text-gray-600 text-sm line-clamp-2">
                         {article.summary}
                       </p>
-                      <div className="flex items-center text-xs text-gray-500 gap-2 mt-auto">
+                      <div className="flex items-center text-sm text-gray-500 gap-4">
                         <div className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
+                          <Clock className="h-4 w-4" />
                           <span>{article.time}</span>
                         </div>
                         <span>•</span>
