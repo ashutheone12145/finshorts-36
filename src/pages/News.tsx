@@ -56,6 +56,35 @@ const News = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Side News Bar - Takes up 1 column on large screens */}
+        <div className="lg:col-span-1">
+          <div className="sticky top-4">
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <h2 className="text-xl font-bold mb-6 flex justify-between items-center">
+                Latest News
+                <span className="text-sm text-primary hover:text-primary/80 cursor-pointer">
+                  More...
+                </span>
+              </h2>
+              <ul className="space-y-4">
+                {latestNews.map((title, index) => (
+                  <li key={index} className="group">
+                    <a 
+                      href="#" 
+                      className="block text-sm leading-snug hover:text-primary transition-colors duration-200"
+                    >
+                      {title}
+                    </a>
+                    {index < latestNews.length - 1 && (
+                      <Separator className="mt-4" />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* Main Content - Takes up 3 columns on large screens */}
         <div className="lg:col-span-3">
           {/* Featured Article */}
@@ -131,35 +160,6 @@ const News = () => {
                   </div>
                 </Card>
               ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Side News Bar - Takes up 1 column on large screens */}
-        <div className="lg:col-span-1">
-          <div className="sticky top-4">
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-bold mb-6 flex justify-between items-center">
-                Latest News
-                <span className="text-sm text-primary hover:text-primary/80 cursor-pointer">
-                  More...
-                </span>
-              </h2>
-              <ul className="space-y-4">
-                {latestNews.map((title, index) => (
-                  <li key={index} className="group">
-                    <a 
-                      href="#" 
-                      className="block text-sm leading-snug hover:text-primary transition-colors duration-200"
-                    >
-                      {title}
-                    </a>
-                    {index < latestNews.length - 1 && (
-                      <Separator className="mt-4" />
-                    )}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
