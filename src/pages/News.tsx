@@ -1,8 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Clock, ChevronRight } from "lucide-react";
+import { Clock, ChevronRight, Bookmark, Share2, Star, ExternalLink } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const latestNews = [
   {
@@ -81,6 +82,18 @@ const latestNews = [
 
 const News = () => {
   const [selectedNews, setSelectedNews] = useState(latestNews[0]);
+  const [bookmarked, setBookmarked] = useState<number[]>([]);
+  const [ratings, setRatings] = useState<{[key: number]: number}>({});
+
+  const toggleBookmark = (id: number) => {
+    setBookmarked(prev => 
+      prev.includes(id) ? prev.filter(b => b !== id) : [...prev, id]
+    );
+  };
+
+  const handleRating = (id: number, rating: number) => {
+    setRatings(prev => ({...prev, [id]: rating}));
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -122,17 +135,49 @@ const News = () => {
         <div className="lg:col-span-3">
           {/* Featured Article */}
           <div className="mb-12">
-            <article className="grid md:grid-cols-2 gap-8 items-center animate-fade-in">
-              <div className="space-y-4">
-                <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-                  {selectedNews.category}
-                </span>
+            <article className="animate-fade-in">
+              {/* Image Section */}
+              <div className="relative aspect-[16/9] rounded-lg overflow-hidden mb-6">
+                <img 
+                  src={selectedNews.image} 
+                  alt={selectedNews.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+
+              {/* Content Section */}
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
+                    {selectedNews.category}
+                  </span>
+                  <div className="flex items-center gap-4">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => toggleBookmark(selectedNews.id)}
+                      className={bookmarked.includes(selectedNews.id) ? "text-primary" : ""}
+                    >
+                      <Bookmark className="h-5 w-5" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => navigator.share?.({
+                        title: selectedNews.title,
+                        text: selectedNews.summary,
+                        url: window.location.href
+                      })}
+                    >
+                      <Share2 className="h-5 w-5" />
+                    </Button>
+                  </div>
+                </div>
+
                 <h1 className="text-3xl md:text-4xl font-serif font-bold leading-tight">
                   {selectedNews.title}
                 </h1>
-                <p className="text-gray-600 leading-relaxed">
-                  {selectedNews.summary}
-                </p>
+
                 <div className="flex items-center text-sm text-gray-500 gap-4">
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
@@ -141,13 +186,37 @@ const News = () => {
                   <span>•</span>
                   <span>{selectedNews.source}</span>
                 </div>
-              </div>
-              <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
-                <img 
-                  src={selectedNews.image} 
-                  alt={selectedNews.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
+
+                <p className="text-gray-600 leading-relaxed">
+                  {selectedNews.summary}
+                </p>
+
+                {/* Rating Section */}
+                <div className="flex items-center gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Button
+                      key={star}
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleRating(selectedNews.id, star)}
+                      className={`${
+                        (ratings[selectedNews.id] || 0) >= star ? "text-yellow-400" : "text-gray-300"
+                      }`}
+                    >
+                      <Star className="h-5 w-5" />
+                    </Button>
+                  ))}
+                </div>
+
+                {/* Links Section */}
+                <div className="flex items-center gap-4">
+                  <Button className="flex items-center gap-2">
+                    Read Full Article <ExternalLink className="h-4 w-4" />
+                  </Button>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    Visit Source <ExternalLink className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </article>
           </div>
