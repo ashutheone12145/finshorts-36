@@ -117,21 +117,33 @@ const SavedArticles = () => {
               <div className="absolute top-2 right-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon" className="bg-white/90 hover:bg-white">
+                    <Button variant="ghost" size="icon" className="bg-white hover:bg-white/90">
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={() => handleCopyLink(article.url)}>
+                  <DropdownMenuContent 
+                    align="end" 
+                    className="w-48 bg-white border border-gray-200 shadow-lg"
+                  >
+                    <DropdownMenuItem 
+                      onClick={() => handleCopyLink(article.url)}
+                      className="hover:bg-gray-100"
+                    >
                       <Copy className="mr-2 h-4 w-4" />
                       Copy link
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => window.open(article.url, '_blank')}>
+                    <DropdownMenuItem 
+                      onClick={() => window.open(article.url, '_blank')}
+                      className="hover:bg-gray-100"
+                    >
                       <Link className="mr-2 h-4 w-4" />
                       Open in new tab
                     </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => handleRemoveArticle(article.id)} className="text-red-600">
+                    <DropdownMenuSeparator className="bg-gray-200" />
+                    <DropdownMenuItem 
+                      onClick={() => handleRemoveArticle(article.id)} 
+                      className="text-red-600 hover:bg-red-50"
+                    >
                       <Trash2 className="mr-2 h-4 w-4" />
                       Remove
                     </DropdownMenuItem>
