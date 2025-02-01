@@ -203,7 +203,7 @@ const News = () => {
                         (ratings[selectedNews.id] || 0) >= star ? "text-yellow-400" : "text-gray-300"
                       }`}
                     >
-                      <Star className="h-5 w-5" />
+                      <Star className="h-8 w-8" fill={(ratings[selectedNews.id] || 0) >= star ? "currentColor" : "none"} />
                     </Button>
                   ))}
                 </div>
