@@ -11,6 +11,7 @@ import Login from "./pages/auth/Login";
 import MarketAnalysis from "./pages/MarketAnalysis";
 import News from "./pages/News";
 import SavedArticles from "./pages/SavedArticles";
+import Trending from "./pages/Trending";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/market-analysis" element={<MarketAnalysis />} />
               <Route path="/news" element={<News />} />
               <Route path="/saved-articles" element={<SavedArticles />} />
+              <Route path="/trending" element={<Trending />} />
             </Routes>
           </main>
           <Footer />
