@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bookmark, Share2, ExternalLink, Star } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 interface TrendingArticle {
   id: string;
@@ -18,14 +18,29 @@ interface TrendingArticle {
 const Trending = () => {
   const [articles, setArticles] = useState<TrendingArticle[]>([]);
   const [savedArticles, setSavedArticles] = useState<string[]>([]);
+  const [ratings, setRatings] = useState<{ [key: string]: number }>({});
   const { toast } = useToast();
 
   useEffect(() => {
-    // Load saved articles from localStorage on component mount
-    const saved = localStorage.getItem("savedArticles");
+    // Load saved articles and ratings from localStorage on component mount
+    const saved = localStorage.getItem("bookmarkedArticles");
+    const savedRatings = localStorage.getItem("articleRatings");
+    
     if (saved) {
-      const parsedSaved = JSON.parse(saved);
-      setSavedArticles(parsedSaved.map((article: TrendingArticle) => article.id));
+      try {
+        const parsedSaved = JSON.parse(saved);
+        setSavedArticles(parsedSaved.map((article: any) => article.id));
+      } catch (error) {
+        console.error("Error parsing saved articles:", error);
+      }
+    }
+
+    if (savedRatings) {
+      try {
+        setRatings(JSON.parse(savedRatings));
+      } catch (error) {
+        console.error("Error parsing ratings:", error);
+      }
     }
 
     // Simulated trending articles data
@@ -156,22 +171,36 @@ const Trending = () => {
 
   const handleBookmark = (article: TrendingArticle) => {
     try {
-      const savedArticlesData = JSON.parse(localStorage.getItem("savedArticles") || "[]");
-      const isAlreadySaved = savedArticlesData.some((saved: TrendingArticle) => saved.id === article.id);
+      const savedBookmarks = localStorage.getItem("bookmarkedArticles");
+      const currentBookmarks = savedBookmarks ? JSON.parse(savedBookmarks) : [];
+      const isAlreadySaved = currentBookmarks.some((saved: TrendingArticle) => saved.id === article.id);
 
       if (!isAlreadySaved) {
-        const updatedSavedArticles = [...savedArticlesData, article];
-        localStorage.setItem("savedArticles", JSON.stringify(updatedSavedArticles));
+        // Add the article to bookmarks
+        const updatedBookmarks = [...currentBookmarks, {
+          id: article.id,
+          title: article.title,
+          summary: article.description,
+          image: article.imageUrl,
+          url: article.url,
+          source: article.source,
+          time: article.date,
+          category: "Trending"
+        }];
+        
+        localStorage.setItem("bookmarkedArticles", JSON.stringify(updatedBookmarks));
         setSavedArticles(prev => [...prev, article.id]);
+        
         toast({
           title: "Article Saved",
           description: "The article has been added to your saved articles.",
         });
       } else {
-        // Remove the article if it's already saved
-        const filteredArticles = savedArticlesData.filter((saved: TrendingArticle) => saved.id !== article.id);
-        localStorage.setItem("savedArticles", JSON.stringify(filteredArticles));
+        // Remove the article from bookmarks
+        const filteredBookmarks = currentBookmarks.filter((saved: TrendingArticle) => saved.id !== article.id);
+        localStorage.setItem("bookmarkedArticles", JSON.stringify(filteredBookmarks));
         setSavedArticles(prev => prev.filter(id => id !== article.id));
+        
         toast({
           title: "Article Removed",
           description: "The article has been removed from your saved articles.",
@@ -184,6 +213,17 @@ const Trending = () => {
         variant: "destructive",
       });
     }
+  };
+
+  const handleRating = (articleId: string, rating: number) => {
+    const newRatings = { ...ratings, [articleId]: rating };
+    setRatings(newRatings);
+    localStorage.setItem("articleRatings", JSON.stringify(newRatings));
+    
+    toast({
+      title: "Rating Updated",
+      description: "Thank you for rating this article!",
+    });
   };
 
   const handleShare = async (url: string) => {
@@ -233,18 +273,24 @@ const Trending = () => {
                 <CardContent className="p-0">
                   <div className="flex items-center justify-start mb-4">
                     <div className="flex items-center space-x-1 group">
-                      {[...Array(5)].map((_, index) => (
-                        <Star
-                          key={index}
-                          className={`w-5 h-5 transition-colors duration-200 ${
-                            index < Math.floor(article.rating)
-                              ? "text-yellow-400 fill-current"
-                              : "text-gray-300 group-hover:text-gray-400"
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Button
+                          key={star}
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleRating(article.id, star)}
+                          className={`p-0 hover:bg-transparent ${
+                            (ratings[article.id] || 0) >= star ? "text-yellow-400" : "text-gray-300"
                           }`}
-                        />
+                        >
+                          <Star
+                            className="w-5 h-5"
+                            fill={(ratings[article.id] || 0) >= star ? "currentColor" : "none"}
+                          />
+                        </Button>
                       ))}
                       <span className="text-sm text-gray-600 ml-2">
-                        {article.rating.toFixed(1)}
+                        {ratings[article.id] ? ratings[article.id].toFixed(1) : "-"}
                       </span>
                     </div>
                     <span className="text-sm text-gray-500 ml-4">{article.source}</span>
