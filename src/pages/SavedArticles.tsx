@@ -3,7 +3,6 @@ import { Clock, Share2, Star, ExternalLink, MoreVertical, Pencil, Trash2, Copy, 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { format } from "date-fns";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -165,7 +164,7 @@ const SavedArticles = () => {
               <div className="flex items-center text-sm text-gray-500 gap-4">
                 <div className="flex items-center gap-1">
                   <Clock className="h-4 w-4" />
-                  <span>{format(new Date(article.time), "MMM dd, yyyy")}</span>
+                  <span>{article.time}</span>
                 </div>
                 <span>•</span>
                 <span>{article.source}</span>
