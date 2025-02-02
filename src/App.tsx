@@ -13,32 +13,34 @@ import News from "./pages/News";
 import SavedArticles from "./pages/SavedArticles";
 import Trending from "./pages/Trending";
 
-const queryClient = new QueryClient();
+function App() {
+  const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-grow pt-[76px]">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/auth/signup" element={<SignUp />} />
-              <Route path="/auth/login" element={<Login />} />
-              <Route path="/market-analysis" element={<MarketAnalysis />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/saved-articles" element={<SavedArticles />} />
-              <Route path="/trending" element={<Trending />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-grow pt-[76px]">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/auth/signup" element={<SignUp />} />
+                <Route path="/auth/login" element={<Login />} />
+                <Route path="/market-analysis" element={<MarketAnalysis />} />
+                <Route path="/news" element={<News />} />
+                <Route path="/saved-articles" element={<SavedArticles />} />
+                <Route path="/trending" element={<Trending />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;
