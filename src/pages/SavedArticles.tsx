@@ -3,13 +3,7 @@ import { Clock, Share2, Star, ExternalLink, MoreVertical, Pencil, Trash2, Copy, 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { format } from "date-fns";
 
 const SavedArticles = () => {
   const [bookmarkedArticles, setBookmarkedArticles] = useState<any[]>([]);
@@ -164,7 +158,7 @@ const SavedArticles = () => {
               <div className="flex items-center text-sm text-gray-500 gap-4">
                 <div className="flex items-center gap-1">
                   <Clock className="h-4 w-4" />
-                  <span>{article.time}</span>
+                  <span>{format(new Date(article.time), "MMM dd, yyyy")}</span>
                 </div>
                 <span>•</span>
                 <span>{article.source}</span>

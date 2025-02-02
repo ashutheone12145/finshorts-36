@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bookmark, Share2, ExternalLink, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { format } from "date-fns";
 
 interface TrendingArticle {
   id: string;
@@ -265,36 +266,14 @@ const Trending = () => {
               </div>
               <div className="md:w-2/3 p-6">
                 <CardHeader className="p-0 mb-4">
+                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+                    <span>{article.source}</span>
+                    <span>•</span>
+                    <span>{format(new Date(article.date), "MMM dd, yyyy")}</span>
+                  </div>
                   <CardTitle className="text-xl line-clamp-2 mb-2">{article.title}</CardTitle>
-                  <p className="text-sm text-gray-600 line-clamp-6">
-                    {article.description}
-                  </p>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <div className="flex items-center justify-start mb-4">
-                    <div className="flex items-center space-x-1 group">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Button
-                          key={star}
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleRating(article.id, star)}
-                          className={`p-0 hover:bg-transparent ${
-                            (ratings[article.id] || 0) >= star ? "text-yellow-400" : "text-gray-300"
-                          }`}
-                        >
-                          <Star
-                            className="w-5 h-5"
-                            fill={(ratings[article.id] || 0) >= star ? "currentColor" : "none"}
-                          />
-                        </Button>
-                      ))}
-                      <span className="text-sm text-gray-600 ml-2">
-                        {ratings[article.id] ? ratings[article.id].toFixed(1) : "-"}
-                      </span>
-                    </div>
-                    <span className="text-sm text-gray-500 ml-4">{article.source}</span>
-                  </div>
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center space-x-2">
                       <Button
