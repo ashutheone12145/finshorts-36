@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Clock, ChevronRight, Bookmark, Share2, Star, ExternalLink } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -87,17 +87,51 @@ const News = () => {
   const [ratings, setRatings] = useState<{[key: number]: number}>({});
   const { toast } = useToast();
 
+  // Load saved bookmarks on component mount
+  useEffect(() => {
+    const savedArticles = localStorage.getItem('bookmarkedArticles');
+    if (savedArticles) {
+      try {
+        const parsedArticles = JSON.parse(savedArticles);
+        setBookmarked(parsedArticles.map((article: any) => article.id));
+      } catch (error) {
+        console.error('Error loading bookmarked articles:', error);
+      }
+    }
+  }, []);
+
   const toggleBookmark = (id: number) => {
     setBookmarked(prev => {
       const newBookmarks = prev.includes(id) 
         ? prev.filter(b => b !== id) 
         : [...prev, id];
       
-      // Save bookmarked articles to localStorage
-      const bookmarkedArticles = latestNews.filter(article => 
-        newBookmarks.includes(article.id)
-      );
-      localStorage.setItem('bookmarkedArticles', JSON.stringify(bookmarkedArticles));
+      // Get existing bookmarked articles
+      const existingBookmarks = localStorage.getItem('bookmarkedArticles');
+      let existingArticles = [];
+      try {
+        existingArticles = existingBookmarks ? JSON.parse(existingBookmarks) : [];
+      } catch (error) {
+        console.error('Error parsing existing bookmarks:', error);
+      }
+
+      // Find the article to add/remove
+      const article = latestNews.find(article => article.id === id);
+      
+      // Update bookmarked articles
+      const updatedArticles = prev.includes(id)
+        ? existingArticles.filter((a: any) => a.id !== id)
+        : [...existingArticles, article];
+
+      // Save to localStorage
+      localStorage.setItem('bookmarkedArticles', JSON.stringify(updatedArticles));
+
+      toast({
+        title: prev.includes(id) ? "Removed from bookmarks" : "Added to bookmarks",
+        description: prev.includes(id) 
+          ? "Article has been removed from your saved articles" 
+          : "Article has been saved to your bookmarks",
+      });
       
       return newBookmarks;
     });
