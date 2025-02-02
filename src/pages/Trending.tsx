@@ -217,14 +217,14 @@ const Trending = () => {
                 </CardHeader>
                 <CardContent className="p-0">
                   <div className="flex items-center justify-start mb-4">
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center space-x-1 group">
                       {[...Array(5)].map((_, index) => (
                         <Star
                           key={index}
-                          className={`w-5 h-5 ${
+                          className={`w-5 h-5 transition-colors duration-200 ${
                             index < Math.floor(article.rating)
                               ? "text-yellow-400 fill-current"
-                              : "text-gray-300"
+                              : "text-gray-300 group-hover:text-gray-400"
                           }`}
                         />
                       ))}
@@ -240,7 +240,7 @@ const Trending = () => {
                         variant="ghost"
                         size="sm"
                         onClick={() => handleBookmark(article)}
-                        className="hover:text-primary"
+                        className="hover:bg-primary/10 hover:text-primary transition-colors duration-200"
                       >
                         <Bookmark className="w-4 h-4" />
                       </Button>
@@ -248,7 +248,7 @@ const Trending = () => {
                         variant="ghost"
                         size="sm"
                         onClick={() => handleShare(article.url)}
-                        className="hover:text-primary"
+                        className="hover:bg-primary/10 hover:text-primary transition-colors duration-200"
                       >
                         <Share2 className="w-4 h-4" />
                       </Button>
@@ -257,7 +257,7 @@ const Trending = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => window.open(article.url, "_blank")}
-                      className="hover:text-primary"
+                      className="hover:bg-primary/10 hover:text-primary transition-colors duration-200"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Read More
