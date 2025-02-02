@@ -101,6 +101,46 @@ const Trending = () => {
         source: "Auto Insider",
         date: "2024-02-08",
         rating: 4.6
+      },
+      {
+        id: "9",
+        title: "Emerging Trends in Digital Marketing",
+        description: "A comprehensive analysis of the latest digital marketing trends and strategies that are reshaping the industry. This report examines the impact of artificial intelligence on marketing automation, the rise of voice search optimization, and the growing importance of video content marketing. Industry experts discuss how businesses can leverage these trends to enhance their digital presence and improve customer engagement in an increasingly competitive online marketplace.",
+        url: "https://example.com/article9",
+        imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+        source: "Marketing Weekly",
+        date: "2024-02-07",
+        rating: 4.3
+      },
+      {
+        id: "10",
+        title: "Advancements in Quantum Computing",
+        description: "Recent breakthroughs in quantum computing technology are paving the way for revolutionary changes in data processing and computational capabilities. Scientists have achieved significant milestones in quantum bit stability and error correction, bringing us closer to practical quantum computers. This detailed report explores the potential applications across various industries, from cryptography to drug discovery, and discusses the challenges that remain in making quantum computing commercially viable.",
+        url: "https://example.com/article10",
+        imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+        source: "Tech Insights",
+        date: "2024-02-06",
+        rating: 4.7
+      },
+      {
+        id: "11",
+        title: "Climate Change Impact on Global Agriculture",
+        description: "An in-depth study of how climate change is affecting agricultural practices worldwide and the innovative solutions being developed to address these challenges. The report covers emerging sustainable farming techniques, drought-resistant crop development, and smart irrigation systems. Agricultural experts share insights on adapting farming practices to changing weather patterns and implementing technology-driven solutions for improved crop yields while maintaining environmental sustainability.",
+        url: "https://example.com/article11",
+        imageUrl: "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab",
+        source: "Environmental Science Journal",
+        date: "2024-02-05",
+        rating: 4.5
+      },
+      {
+        id: "12",
+        title: "The Future of Remote Work Technologies",
+        description: "A detailed analysis of emerging technologies shaping the future of remote work and distributed teams. This comprehensive report examines new collaboration tools, virtual reality workspaces, and AI-powered productivity solutions that are transforming how we work remotely. Industry leaders discuss the integration of these technologies in corporate environments and their impact on employee engagement, productivity, and work-life balance in the post-pandemic era.",
+        url: "https://example.com/article12",
+        imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+        source: "Future Work Digest",
+        date: "2024-02-04",
+        rating: 4.8
       }
     ];
     setArticles(trendingArticles);
@@ -171,12 +211,12 @@ const Trending = () => {
               <div className="md:w-2/3 p-6">
                 <CardHeader className="p-0 mb-4">
                   <CardTitle className="text-xl line-clamp-2 mb-2">{article.title}</CardTitle>
-                  <p className="text-sm text-gray-600 line-clamp-5">
+                  <p className="text-sm text-gray-600 line-clamp-6">
                     {article.description}
                   </p>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-start mb-4">
                     <div className="flex items-center space-x-1">
                       {[...Array(5)].map((_, index) => (
                         <Star
@@ -192,7 +232,7 @@ const Trending = () => {
                         {article.rating.toFixed(1)}
                       </span>
                     </div>
-                    <span className="text-sm text-gray-500">{article.source}</span>
+                    <span className="text-sm text-gray-500 ml-4">{article.source}</span>
                   </div>
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center space-x-2">
