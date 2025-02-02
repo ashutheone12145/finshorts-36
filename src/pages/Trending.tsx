@@ -17,9 +17,17 @@ interface TrendingArticle {
 
 const Trending = () => {
   const [articles, setArticles] = useState<TrendingArticle[]>([]);
+  const [savedArticles, setSavedArticles] = useState<string[]>([]);
   const { toast } = useToast();
 
   useEffect(() => {
+    // Load saved articles from localStorage on component mount
+    const saved = localStorage.getItem("savedArticles");
+    if (saved) {
+      const parsedSaved = JSON.parse(saved);
+      setSavedArticles(parsedSaved.map((article: TrendingArticle) => article.id));
+    }
+
     // Simulated trending articles data
     const trendingArticles: TrendingArticle[] = [
       {
@@ -148,18 +156,25 @@ const Trending = () => {
 
   const handleBookmark = (article: TrendingArticle) => {
     try {
-      const savedArticles = JSON.parse(localStorage.getItem("savedArticles") || "[]");
-      if (!savedArticles.some((saved: TrendingArticle) => saved.id === article.id)) {
-        localStorage.setItem("savedArticles", JSON.stringify([...savedArticles, article]));
+      const savedArticlesData = JSON.parse(localStorage.getItem("savedArticles") || "[]");
+      const isAlreadySaved = savedArticlesData.some((saved: TrendingArticle) => saved.id === article.id);
+
+      if (!isAlreadySaved) {
+        const updatedSavedArticles = [...savedArticlesData, article];
+        localStorage.setItem("savedArticles", JSON.stringify(updatedSavedArticles));
+        setSavedArticles(prev => [...prev, article.id]);
         toast({
           title: "Article Saved",
           description: "The article has been added to your saved articles.",
         });
       } else {
+        // Remove the article if it's already saved
+        const filteredArticles = savedArticlesData.filter((saved: TrendingArticle) => saved.id !== article.id);
+        localStorage.setItem("savedArticles", JSON.stringify(filteredArticles));
+        setSavedArticles(prev => prev.filter(id => id !== article.id));
         toast({
-          title: "Already Saved",
-          description: "This article is already in your saved articles.",
-          variant: "destructive",
+          title: "Article Removed",
+          description: "The article has been removed from your saved articles.",
         });
       }
     } catch (error) {
@@ -240,9 +255,15 @@ const Trending = () => {
                         variant="ghost"
                         size="sm"
                         onClick={() => handleBookmark(article)}
-                        className="hover:bg-primary/10 hover:text-primary transition-colors duration-200"
+                        className={`hover:bg-primary/10 hover:text-primary transition-colors duration-200 ${
+                          savedArticles.includes(article.id) ? "text-primary" : ""
+                        }`}
                       >
-                        <Bookmark className="w-4 h-4" />
+                        <Bookmark
+                          className={`w-4 h-4 ${
+                            savedArticles.includes(article.id) ? "fill-current" : ""
+                          }`}
+                        />
                       </Button>
                       <Button
                         variant="ghost"
