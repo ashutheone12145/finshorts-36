@@ -12,9 +12,10 @@ import MarketAnalysis from "./pages/MarketAnalysis";
 import News from "./pages/News";
 import SavedArticles from "./pages/SavedArticles";
 import Trending from "./pages/Trending";
+import { useState } from "react";
 
 function App() {
-  const queryClient = new QueryClient();
+  const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
