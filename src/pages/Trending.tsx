@@ -25,7 +25,7 @@ const Trending = () => {
       {
         id: "1",
         title: "Major Market Movements: Global Trends Analysis",
-        description: "An in-depth look at the latest market trends and their impact on global economies.",
+        description: "An in-depth look at the latest market trends and their impact on global economies. This comprehensive analysis explores key factors driving market changes, including technological advancements, geopolitical developments, and shifting consumer behaviors. The report highlights emerging patterns in various sectors and their potential long-term implications for investors and businesses worldwide.",
         url: "https://example.com/article1",
         imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
         source: "Financial Times",
@@ -35,7 +35,7 @@ const Trending = () => {
       {
         id: "2",
         title: "Tech Sector Shows Strong Growth in Q1",
-        description: "Technology companies report exceptional first-quarter results amid digital transformation.",
+        description: "Technology companies report exceptional first-quarter results amid digital transformation. The surge in remote work solutions, cloud computing, and artificial intelligence implementations has driven unprecedented growth. Industry leaders attribute this success to increased enterprise spending on digital infrastructure and innovative solutions for hybrid work environments.",
         url: "https://example.com/article2",
         imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
         source: "Bloomberg",
@@ -45,7 +45,7 @@ const Trending = () => {
       {
         id: "3",
         title: "New Developments in Renewable Energy",
-        description: "Latest breakthroughs in sustainable energy technology and their potential impact.",
+        description: "Latest breakthroughs in sustainable energy technology and their potential impact. Scientists and researchers have made significant progress in improving solar panel efficiency and wind turbine technology. These advancements promise to revolutionize the renewable energy sector and accelerate the global transition to clean energy sources.",
         url: "https://example.com/article3",
         imageUrl: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e",
         source: "Reuters",
@@ -55,7 +55,7 @@ const Trending = () => {
       {
         id: "4",
         title: "Global Supply Chain Updates",
-        description: "Recent changes in international logistics and their effects on world trade.",
+        description: "Recent changes in international logistics and their effects on world trade. The analysis covers emerging trends in supply chain management, including the adoption of blockchain technology, AI-driven optimization, and sustainable practices. Industry experts discuss strategies for building resilient supply chains in an increasingly complex global market.",
         url: "https://example.com/article4",
         imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d",
         source: "Wall Street Journal",
@@ -65,12 +65,42 @@ const Trending = () => {
       {
         id: "5",
         title: "Healthcare Innovation Report",
-        description: "New medical technologies and treatments reshaping the healthcare industry.",
+        description: "New medical technologies and treatments reshaping the healthcare industry. This comprehensive report examines breakthrough developments in personalized medicine, AI-driven diagnostics, and revolutionary treatment methods. Healthcare professionals discuss the potential impact of these innovations on patient care and medical practice.",
         url: "https://example.com/article5",
         imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d",
         source: "Health Weekly",
         date: "2024-02-11",
         rating: 4.7
+      },
+      {
+        id: "6",
+        title: "Artificial Intelligence in Financial Services",
+        description: "Exploring how AI is transforming the banking and financial services sector. From automated trading systems to personalized banking experiences, artificial intelligence is revolutionizing how financial institutions operate. Industry experts discuss the benefits and challenges of implementing AI solutions in traditional banking systems.",
+        url: "https://example.com/article6",
+        imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+        source: "TechFinance",
+        date: "2024-02-10",
+        rating: 4.9
+      },
+      {
+        id: "7",
+        title: "Sustainable Agriculture Innovations",
+        description: "Revolutionary farming techniques and technologies promoting sustainable agriculture. This report covers advanced hydroponics systems, precision farming technologies, and AI-driven crop management solutions. Agricultural experts share insights on how these innovations are addressing global food security challenges.",
+        url: "https://example.com/article7",
+        imageUrl: "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab",
+        source: "AgriTech Today",
+        date: "2024-02-09",
+        rating: 4.4
+      },
+      {
+        id: "8",
+        title: "Future of Electric Vehicles",
+        description: "Analysis of the rapidly evolving electric vehicle market and upcoming innovations. The report examines new battery technologies, charging infrastructure developments, and emerging players in the EV space. Industry experts discuss the challenges and opportunities in the transition to electric mobility.",
+        url: "https://example.com/article8",
+        imageUrl: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7",
+        source: "Auto Insider",
+        date: "2024-02-08",
+        rating: 4.6
       }
     ];
     setArticles(trendingArticles);
@@ -141,7 +171,7 @@ const Trending = () => {
               <div className="md:w-2/3 p-6">
                 <CardHeader className="p-0 mb-4">
                   <CardTitle className="text-xl line-clamp-2 mb-2">{article.title}</CardTitle>
-                  <p className="text-sm text-gray-600 line-clamp-3">
+                  <p className="text-sm text-gray-600 line-clamp-5">
                     {article.description}
                   </p>
                 </CardHeader>
